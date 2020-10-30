@@ -1,0 +1,109 @@
+# swagger: "2.0"
+# info:
+#   version: "1.0.0"
+#   title: "Swagger Petstore"
+# host: "localhost:8082"
+# basePath: "/apis/v1.0"
+# schemes:
+#   - "https"
+#   - "http"
+paths:
+  /bids/1:                # path of the user from your endpoint
+    get:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Bids            # Value of the tag
+      summary: Get all List
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: header
+        name: token
+        description: an authorization header
+        required: true
+        type: string
+      responses:          # server responses
+        201:
+          description: An object with object details
+  /bids/problems/1:                # path of the user from your endpoint
+    get:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Bids            # Value of the tag
+      summary: Get all List
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: header
+        name: token
+        description: an authorization header
+        required: true
+        type: string
+      responses:          # server responses
+        201:
+          description: An object with object details
+  /bids:                # path of the user from your endpoint
+    get:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Bids            # Value of the tag
+      summary: Get all List
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: header
+        name: token
+        description: an authorization header
+        required: true
+        type: string
+      responses:          # server responses
+        201:
+          description: An object with user details
+    post:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Bids           # Value of the tag
+      summary: Add a bid to the Problem
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: header
+        name: token
+        description: an authorization header
+        required: true
+        type: string
+      - in: body          # request body
+        name: user_bid    # name of request, can be any name
+        description: It enables a user to reset an account password
+        required: true   # can also be true depending on user preference
+        schema:           # Schema definition
+          $ref: '#/definitions/new_user_bid_body' 
+      responses:          # server responses
+        201:
+          description: An object with user details
+definitions:        # Schema defination for request body
+  new_user_bid_body:
+      properties:
+        user_bid:
+         type: object
+         properties:
+          price:
+            type: string
+            example: 1
+          description:
+            type: string
+            example: new bid
+          problem_id:
+            type: string
+            example: 1
+          organization_id:
+            type: string
+            example: 1
+          user_id:
+            type: string
+            example: 1
+          status:
+            type: boolean
+            example: false
+           
+        
+
+          
+
+        

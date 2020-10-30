@@ -1,0 +1,105 @@
+# swagger: "2.0"
+# info:
+#   version: "1.0.0"
+#   title: "Swagger Petstore"
+# host: "localhost:8082"
+# basePath: "/apis/v1.0"
+# schemes:
+#   - "https"
+#   - "http"
+paths:
+  /problems/1:                # path of the user from your endpoint
+    get:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Problems            # Value of the tag
+      summary: Get all List
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: header
+        name: token
+        description: an authorization header
+        required: true
+        type: string
+      responses:          # server responses
+        201:
+          description: An object with object details
+  /problems:                # path of the user from your endpoint
+    get:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Problems            # Value of the tag
+      summary: Get all List
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: header
+        name: token
+        description: an authorization header
+        required: true
+        type: string
+      responses:          # server responses
+        201:
+          description: An object with user details
+    post:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Vehicles           # Value of the tag
+      summary: Add a review to the Organization
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: header
+        name: token
+        description: an authorization header
+        required: true
+        type: string
+      - in: body          # request body
+        name: user_vehicle     # name of request, can be any name
+        description: It enables a user to reset an account password
+        required: true   # can also be true depending on user preference
+        schema:           # Schema definition
+          $ref: '#/definitions/new_user_vechicle_body' 
+      responses:          # server responses
+        201:
+          description: An object with user details
+definitions:        # Schema defination for request body
+  new_user_vechicle_body:
+      properties:
+        user_vehicle:
+         type: object
+         properties:
+          make:
+            type: string
+            example: "MTL"
+          model:
+            type: string
+            example: 1
+          year:
+            type: string
+            example: 1
+          engine_make:
+            type: string
+            example: 1
+          engine_model:
+            type: string
+            example: 1
+          engine_liters:
+            type: string
+            example: 1
+          mileage:
+            type: string
+            example: 1
+          age:
+            type: string
+            example: 1
+          leased:
+            type: string
+            example: 1
+          user_id:
+            type: string
+            example: 1
+           
+        
+
+          
+
+        

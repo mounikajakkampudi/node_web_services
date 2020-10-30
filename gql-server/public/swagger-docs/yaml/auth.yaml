@@ -1,0 +1,111 @@
+# swagger: "2.0"
+# info:
+#   version: "1.0.0"
+#   title: "Swagger Petstore"
+# host: "localhost:8082"
+# basePath: "/apis/v1.0"
+# schemes:
+# - "https"
+# - "http"
+paths:
+  /register:                # path of the user from your endpoint
+    post:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Authentication            # Value of the tag
+      summary: creates a new user
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: body          # request body
+        name: register     # name of request, can be any name
+        description: It enables a user to create an account
+        required: true   # can also be true depending on user preference
+        schema:           # Schema definition
+          $ref: '#/definitions/registerUser' 
+      responses:          # server responses
+        201:
+          description: An object with user details
+  /login:                # path of the user from your endpoint
+    post:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Authentication            # Value of the tag
+      summary: user login
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: body          # request body
+        name: login     # name of request, can be any name
+        description: It enables a user to login an account
+        required: true   # can also be true depending on user preference
+        schema:           # Schema definition
+          $ref: '#/definitions/loginUser' 
+      responses:          # server responses
+        201:
+          description: An object with access token
+  /password/recovery:                # path of the user from your endpoint
+    post:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Authentication            # Value of the tag
+      summary: reset password user
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: body          # request body
+        name: reset_password     # name of request, can be any name
+        description: It enables a user to reset an account password
+        required: true   # can also be true depending on user preference
+        schema:           # Schema definition
+          $ref: '#/definitions/reset_password' 
+      responses:          # server responses
+        201:
+          description: An object with user details
+definitions:        # Schema defination for request body
+  registerUser:
+    type: object
+    description: Contains default properties
+    required:
+      - login
+      - password
+      - firstname
+      - lastname
+      - role
+    properties:
+      login:
+        type: string
+        example: "maheshbabu.somineni@gmail.com"
+      password:
+        type: string
+        example: "1234"
+      firstname:
+        type: string
+        example: "mahesh"
+      lastname:
+        type: string
+        example: "somineni"
+      role:
+        type: string
+        example: "user"
+
+  loginUser:
+    type: object
+    description: Contains default properties
+    required:
+      - login
+      - password
+    properties:
+      login:
+        type: string
+        example: "maheshbabu.somineni@gmail.com"
+      password:
+        type: string
+        example: "1234"
+  reset_password:
+    type: object
+    description: Contains default properties
+    required:
+      - login
+    properties:
+      login:
+        type: string
+        example: "maheshbabu.somineni@gmail.com"
+          
